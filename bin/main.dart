@@ -6,7 +6,24 @@
 //  Example 1:
 //  Input: [7,1,5,3,6,4]
 //  Output: 5
+import 'dart:math';
 
+int getMaxProfit(List<int> prices) {
+  int profit = 0;
+  for (int i = 0; i < prices.length; i++) {
+    int maximum = prices.sublist(i, prices.length).reduce(max);
+    if (maximum > prices[i]) {
+      int tempProfit = maximum - prices[i];
+      if (tempProfit > profit) {
+        profit = tempProfit;
+      }
+    }
+  }
+
+  return profit;
+}
 
 main() {
+  print(getMaxProfit([7, 1, 5, 3, 6, 4]));
+  print(getMaxProfit([1,1,1,1]));
 }
